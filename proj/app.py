@@ -5,10 +5,9 @@ import os
 
 app = Flask(__name__)
 
-# Usually local stored (~/.aws/) credentials of Amazon S3 bucket.
-# Adding raw keys is unsafe and done only for demonstrate
-s3 = boto3.client('s3', aws_access_key_id='AKIAVQLW2A7WB45CJ5BO',
-                  aws_secret_access_key='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')
+# Usually local stored (~/.aws/) credentials of Amazon S3 bucket. Adding raw keys is unsafe.
+s3 = boto3.client('s3', aws_access_key_id='#',
+                  aws_secret_access_key='#')
 
 
 @app.route('/')
