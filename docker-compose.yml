@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  proj:
+    build: .
+    container_name: proj
+    command: gunicorn app:app --bind 0.0.0.0:5000
+    volumes:
+      - ./proj:/proj
+    networks:
+      my-network:
+        aliases:
+          - flask-app
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - proj
+    networks:
+      - my-network
+
+networks:
+  my-network:
